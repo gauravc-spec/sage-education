@@ -1,3 +1,4 @@
+import Assessment from './Assessment';
 import { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route, useNavigate, useSearchParams } from "react-router-dom";
 
@@ -406,45 +407,20 @@ function FloatingWA() {
 // ─────────────────────────
 // ASSESSMENT PAGE
 // ─────────────────────────
+// Add this import at top of App.jsx:
+// import Assessment from './Assessment';
+
+// Replace the AssessmentPage function in App.jsx with this:
 function AssessmentPage() {
   const [params] = useSearchParams();
-  const navigate = useNavigate();
   const partner = params.get("partner");
   const info = partner ? PARTNERS[partner.toLowerCase()] : null;
 
   return (
-    <div style={{ fontFamily: F, background: C.off, minHeight: "100vh" }}>
-      {/* Top bar */}
-      <div style={{ background: C.white, borderBottom: `3px solid ${C.pink}`, padding: "0 24px", position: "sticky", top: 0, zIndex: 999, boxShadow: "0 2px 12px rgba(0,0,0,0.08)" }}>
-        <div style={{ maxWidth: 1000, margin: "0 auto", height: 68, display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-          {info ? (
-            <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-              <img src={info.logo} alt={info.name} style={{ height: 42, objectFit: "contain" }} onError={e => { e.currentTarget.style.display = "none"; }} />
-              <span style={{ fontSize: 13, color: C.g400 }}>Powered by SAGE Educations</span>
-            </div>
-          ) : (
-            <img src="/Sage Ed - Logo.png" alt="SAGE" style={{ height: 42, objectFit: "contain" }} />
-          )}
-          <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
-            <span style={{ fontSize: 13, color: C.g400 }}>⏱ 90–120 mins · 7 sections</span>
-            <button onClick={() => navigate("/")} style={{ background: "none", border: `1px solid ${C.g200}`, color: C.g600, borderRadius: 8, padding: "7px 16px", fontFamily: F, fontSize: 13, cursor: "pointer" }}>← Back</button>
-          </div>
-        </div>
-      </div>
-
-      {/* Content */}
-      <div style={{ maxWidth: 1000, margin: "0 auto", padding: "32px 16px 60px" }}>
-        <div style={{ textAlign: "center", marginBottom: 24 }}>
-          <h1 style={{ fontFamily: FD, fontSize: 28, fontWeight: 800, color: C.black, margin: "0 0 8px" }}>
-            {info ? `${info.name} — Career Assessment` : "SAGE Career Assessment"}
-          </h1>
-          <p style={{ color: C.g400, fontSize: 14, margin: 0 }}>Be completely honest — there are no right or wrong answers. Your career, your truth! 🚀</p>
-        </div>
-        <div style={{ borderRadius: 20, overflow: "hidden", boxShadow: "0 8px 40px rgba(0,0,0,0.12)", border: `1px solid ${C.g200}` }}>
-          <iframe src={FORM_URL} width="100%" height="5400" frameBorder="0" marginHeight="0" marginWidth="0" title="SAGE Career Assessment" style={{ display: "block" }}>Loading…</iframe>
-        </div>
-      </div>
-    </div>
+    <Assessment
+      partnerLogo={info ? info.logo : null}
+      partnerName={info ? info.name : null}
+    />
   );
 }
 
