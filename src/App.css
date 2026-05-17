@@ -1,38 +1,4 @@
-/* Hide scrollbar for all elements */
-body {
-    overflow: auto;
-    scrollbar-width: none; 
-   
-  }
-  
-  ::-webkit-scrollbar {
-    display: none; 
-  }
-
-  .contact-us-button {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background-color: #FF4500; /* Orange Red */
-    color: white;
-    border: none;
-    border-radius: 50px;
-    padding: 15px 20px;
-    cursor: pointer;
-    font-size: 1.2em;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    transition: background-color 0.3s ease, transform 0.3s ease;
-  }
-  
-  .contact-us-button:hover {
-    background-color: #ff6347; /* Tomato */
-    transform: scale(1.05);
-  }
-  
-  .footer {
-    padding: 20px;
-    background-color: #f1f1f1;
-    text-align: center;
-    margin-top: 50px;
-  }
-  
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: #ffffff; }
+button { font-family: inherit; }
+img { max-width: 100%; }
